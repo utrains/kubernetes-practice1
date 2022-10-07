@@ -1,0 +1,68 @@
+# pod-with-toleration-exists2.yaml
+#
+apiVersion: v1
+
+kind: Pod
+
+metadata:
+  name: webserver
+  namespace: geolocation
+
+spec:
+  containers:
+    - name: webserver
+      image: 076892551558.dkr.ecr.us-east-1.amazonaws.com/geolocation_ecr_rep:latest
+      resources:
+        requests:
+          cpu: "500m"
+          memory: "128Mi"
+        limits:
+          cpu: "1000m"
+          memory: "256Mi"
+      ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+  tolerations:
+  - key: "gpu"
+    operator: "Exists"
+    effect: "NoSchedule"
+
+#
+# first add a taint (fragrance) to nodeone.example.com:
+# kubectl taint node nodeone.example.com color=pink:NoSchedule
+# 
+# add taint for nodetwo.example.com also:
+# kubectl taint node nodetwo.example.com color=yellow:NoSchedule
+#
+# confirm that taint is applied on nodeone.example.com & nodetwo.example.com:
+# kubectl describe node nodeone.example.com
+# kubectl describe node nodetwo.example.com
+# (check for value under Taints)
+#
+# Create namespace geolocation -
+# kubectl create namespace geolocation
+#
+# Create the pod which has tolerance with exists operator, key is gpu
+# kubectl create -f pod-with-toleration-exists2.yaml
+#
+# Check the pod
+# kubectl get pods --namespace=geolocation
+# (it should not be running on any of the two nodes)
+# (the operator is Exists but the key specified does not match)
+#
+# Delete pod
+# kubectl delete pod/webserver --namespace=geolocation
+#
+# Delete the taints from the nodes:
+# kubectl taint node nodeone.example.com color:NoSchedule-
+# kubectl taint node nodetwo.example.com color:NoSchedule-
+#
+
+
+
+
+
+
+
+
