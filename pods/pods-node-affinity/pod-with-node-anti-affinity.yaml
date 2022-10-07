@@ -1,0 +1,65 @@
+# pod-with-node-anti-affinity.yaml
+#
+apiVersion: v1
+kind: Pod
+metadata:
+  name: utrains
+  namespace: geolocation
+  labels:
+   app: utrains
+spec:
+  containers:
+    - name: utrains-app
+      image: 076892551558.dkr.ecr.us-east-1.amazonaws.com/geolocation_ecr_rep:latest
+      resources:
+        limits:
+          memory: "500Mi"
+        requests:
+          memory: "300Mi"
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: size
+            operator: NotIn
+            values:
+            - small
+            
+#
+# First assign labels on all nodes in our cluster
+# kubectl label node nodeone.example.com size=small
+# kubectl label node nodetwo.example.com size=large
+#
+# Confirm the labels
+# kubectl get nodes --show-labels
+#
+# Lets think we have some nodes with label small/medium/large
+# We want this pod, NEVER to be deployed on node having size=small
+#
+# Confirm the labels on nodes using:
+#
+# kubectl get nodes --show-labels 
+#
+# create namespace geolocation -
+# kubectl create namespace geolocation
+#
+# run the pod
+# kubectl create -f pod-with-node-anti-affinity.yaml
+#
+# check the pod
+# kubectl get pods --namespace=geolocation --output=wide
+#
+# get details about pod
+# kubectl describe pod/utrains --namespace=geolocation
+#
+# check for the node where its running. It will NOT be
+# running on node having size=small label
+# 
+# delete pod
+# kubectl delete pod/utrains --namespace=geolocation
+#
+# delete the labels
+# kubectl label node nodeone.example.com size-
+# kubectl label node nodetwo.example.com size-
+# 
