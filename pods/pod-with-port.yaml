@@ -29,7 +29,7 @@ spec:
 # kubectl get pods --namespace=geolocation
 #
 # get details about pod
-# kubectl describe pod/utrains --namespace=geolocation
+# kubectl describe pod utrains --namespace=geolocation
 # 
 # Find the IP address of this pod and the node where
 # its running. Go to that node and do a :
@@ -40,5 +40,5 @@ spec:
 # Network Nuts
 #
 # delete pod
-# kubectl delete pod/utrains --namespace=geolocation
+# kubectl delete pod utrains --namespace=geolocation
 #
