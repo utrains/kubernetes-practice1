@@ -1,0 +1,61 @@
+# pod-with-pod-anti-affinity.yaml
+#
+apiVersion: v1
+kind: Pod
+metadata:
+  name: utrains
+  namespace: geolocation
+  labels:
+   app: utrains
+spec:
+  containers:
+    - name: utrains-app
+      image: 076892551558.dkr.ecr.us-east-1.amazonaws.com/geolocation_ecr_rep:latest
+      resources:
+        limits:
+          memory: "500Mi"
+        requests:
+          memory: "300Mi"
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - key: app
+            operator: In
+            values:
+            - web
+        topologyKey: "kubernetes.io/hostname"
+
+#
+# First create a pod (web) using
+# kubectl create -f sample-pod-for-pod-affinity.yaml
+#
+# Check the node where its running.
+#
+# Now we want this pod to NEVER be deployed on 
+# same node, where "web" pod is running
+#
+# create namespace geolocation -
+# kubectl create namespace geolocation
+#
+# run the pod
+# kubectl create -f pod-with-pod-anti-affinity.yaml
+#
+# check the pod
+# kubectl get pods --namespace=geolocation --output=wide
+#
+# get details about pod
+# kubectl describe pod/utrains --namespace=geolocation
+#
+# get details of all the pods
+# kubectl get pods -o wide --namespace=geolocation
+#
+# check that both the pods will be running on different nodes
+# and utrains pod will NEVER be deployed on same node where
+# web pod is running
+# 
+# delete pod
+# kubectl delete pod utrains --namespace=geolocation
+# kubectl delete pod web --namespace=geolocation
+#
