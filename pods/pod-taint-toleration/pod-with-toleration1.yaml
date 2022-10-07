@@ -1,4 +1,4 @@
-# pod-with-toleration.yaml
+# pod-with-toleration1.yaml
 #
 apiVersion: v1
 
@@ -47,7 +47,7 @@ spec:
 # kubectl create namespace geolocation
 #
 # Run the pod
-# kubectl create -f pod-with-toleration.yaml
+# kubectl create -f pod-with-toleration1.yaml
 #
 # Check the pod
 # kubectl get pods --namespace=geolocation
