@@ -17,7 +17,7 @@ spec:
           image: httpd
           
 # Create the replicatset 
-# kubectl create -f replicaset-for-service.yaml
+# kubectl create -f replicaset-for-pods.yaml
 #
 # Check the pods
 # kubectl get pods
