@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: webserver
+spec:
+  replicas: 3
+  selector: 
+        matchLabels:
+               app: webserver
+  template:
+    metadata:
+      labels:
+        app: webserver
+    spec:
+      containers:
+        - name: webserver
+          image: httpd
+          
+# Create the replicatset 
+# kubectl create -f replicaset-for-service.yaml
+#
+# Check the pods
+# kubectl get pods
+#
+# Check the nodes where the pods are placed
+# kubectl get pods -o wide
+#
+# check the replicasets
+# kubectl get rs
+#
+# describe a pod
+# kubectl describe pod pod-name-here
+#
+# delete the replicaset
+# kubectl delete rs n
