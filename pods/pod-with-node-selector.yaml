@@ -1,0 +1,58 @@
+# pod-with-node-selector.yml
+#
+apiVersion: v1
+kind: Pod
+metadata:
+  name: utrains
+  namespace: geolocation
+  labels:
+   app: utrains
+spec:
+  containers:
+    - name: utrains-app
+      image: 076892551558.dkr.ecr.us-east-1.amazonaws.com/geolocation_ecr_rep:latest
+      resources:
+        limits:
+          memory: "500Mi"
+        requests:
+          memory: "300Mi"
+  nodeSelector:
+        sku: small 
+
+#
+# Here, we are classifying our nodes as small, medium & heavy
+# the label name is "sku" value can be "small / medium / heavy"
+#
+# First label a node as small:
+#
+# kubectl label nodes nodeone.example.com sku=small
+#
+# Confirm for the labels on nodes using:
+#
+# kubectl get nodes --show-labels 
+#
+# create namespace geolocation -
+# kubectl create namespace geolocation
+#
+# run the pod
+# kubectl create -f pod-with-node-selector.yaml
+#
+# check the pod
+# kubectl get pods --namespace=geolocation --output=wide
+#
+# get details about pod
+# kubectl describe pod/utrains --namespace=geolocation
+#
+# check for the node where its running
+# 
+# Also look for: 
+# Node-Selectors:  sku=small 
+#
+# value in the kubectl describe output
+#
+# delete pod
+# kubectl delete pod/utrains --namespace=geolocation
+#
+# delete the label from nodeone.example.com
+# kubectl label node nodeone.example.com sku-
+#
