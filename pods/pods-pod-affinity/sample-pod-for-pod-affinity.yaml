@@ -1,0 +1,31 @@
+# sample-pod-for-pod-affinity.yaml
+#
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web
+  namespace: geolocation
+  labels:
+   app: web
+spec:
+  containers:
+    - name: utrains-app
+      image: 076892551558.dkr.ecr.us-east-1.amazonaws.com/geolocation_ecr_rep:latest
+#
+# Creating a simple pod. Which has apache
+# configured inside it.  
+#
+# create namespace geolocation 
+# kubectl create namespace geolocation
+#
+# run the pod
+# kubectl create -f sample-pod-for-pod-affinity.yaml
+#
+# check the pod
+# kubectl get pods --namespace=geolocation
+#
+# get details about pod
+# kubectl describe pod web --namespace=geolocation
+# 
+# Find the NODE, where its running.
+#
