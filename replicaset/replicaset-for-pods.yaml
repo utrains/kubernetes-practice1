@@ -32,4 +32,4 @@ spec:
 # kubectl describe pod pod-name-here
 #
 # delete the replicaset
-# kubectl delete rs n
+# kubectl delete rs webserver
