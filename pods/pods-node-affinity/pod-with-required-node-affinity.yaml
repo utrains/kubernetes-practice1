@@ -28,7 +28,7 @@ spec:
 
 #
 # This means that the pod will get scheduled ONLY
-# on a node that has a size=small label.
+# on a node that has a sku=small label.
 #
 # First label one/more nodes
 # we are classifying our nodes as small, medium & heavy 
