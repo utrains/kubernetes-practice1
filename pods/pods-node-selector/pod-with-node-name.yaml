@@ -1,0 +1,42 @@
+# pod-with-node-name.yaml
+#
+apiVersion: v1
+kind: Pod
+metadata:
+  name: utrains
+  namespace: geolocation
+  labels:
+   app: utrains
+spec:
+  nodeName: nodeone.example.com 
+  containers:
+    - name: utrains-app
+      image: httpd
+      resources:
+        limits:
+          memory: "500Mi"
+        requests:
+          memory: "300Mi"
+
+
+#
+# We are scheduling our pod to run on a SPECIFIC node - nodeone.example.com 
+#using "nodeName" parameter
+#
+# create namespace geolocation -
+# kubectl create namespace geolocation
+#
+# run the pod
+# kubectl create -f pod-with-node-name.yaml
+#
+# check the pod
+# kubectl get pods
+#
+# get details about pod
+# kubectl describe pod utrains -n geolocation
+#
+# check for the node where its running
+#
+# delete pod
+# kubectl delete pod utrains -n geolocation
+#
