@@ -11,7 +11,7 @@ spec:
   nodeName: nodeone.example.com 
   containers:
     - name: utrains-app
-      image: 076892551558.dkr.ecr.us-east-1.amazonaws.com/geolocation_ecr_rep:latest
+      image: httpd
       resources:
         limits:
           memory: "500Mi"
@@ -33,10 +33,10 @@ spec:
 # kubectl get pods
 #
 # get details about pod
-# kubectl describe pod/utrains --namespace=geolocation
+# kubectl describe pod utrains -n geolocation
 #
 # check for the node where its running
 #
 # delete pod
-# kubectl delete pod/utrains --namespace=geolocation
+# kubectl delete pod utrains -n geolocation
 #
