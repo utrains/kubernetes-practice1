@@ -3,14 +3,14 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: utrains
+  name: utrains1
   namespace: geolocation
   labels:
-   app: utrains
+   app: utrains1
 spec:
   containers:
     - name: utrains-app
-      image: 076892551558.dkr.ecr.us-east-1.amazonaws.com/geolocation_ecr_rep:latest
+      image: httpd
       resources:
         limits:
           memory: "500Mi"
@@ -28,8 +28,8 @@ spec:
             
 #
 # First assign labels on all nodes in our cluster
-# kubectl label node nodeone.example.com size=small
-# kubectl label node nodetwo.example.com size=large
+# kubectl label node nodeone.example.com sku=small
+# kubectl label node nodetwo.example.com sku=large
 #
 # Confirm the labels
 # kubectl get nodes --show-labels
@@ -48,18 +48,18 @@ spec:
 # kubectl create -f pod-with-node-anti-affinity.yaml
 #
 # check the pod
-# kubectl get pods --namespace=geolocation --output=wide
+# kubectl get pods -n geolocation -o wide
 #
 # get details about pod
-# kubectl describe pod/utrains --namespace=geolocation
+# kubectl describe pod utrains -n geolocation
 #
 # check for the node where its running. It will NOT be
-# running on node having size=small label
+# running on node having sku=small label
 # 
 # delete pod
-# kubectl delete pod/utrains --namespace=geolocation
+# kubectl delete pod utrains -n geolocation
 #
 # delete the labels
-# kubectl label node nodeone.example.com size-
-# kubectl label node nodetwo.example.com size-
+# kubectl label node nodeone.example.com sku-
+# kubectl label node nodetwo.example.com sku-
 # 
