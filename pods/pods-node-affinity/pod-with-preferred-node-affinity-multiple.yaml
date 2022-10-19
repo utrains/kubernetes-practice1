@@ -3,10 +3,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: utrains
+  name: utrains4
   namespace: geolocation
   labels:
-   app: utrains
+   app: utrains4
 spec:
   affinity:
     nodeAffinity:
@@ -14,7 +14,7 @@ spec:
       - weight: 10
         preference:
           matchExpressions:
-          - key: size
+          - key: sku
             operator: In
             values:
             - small
@@ -27,7 +27,7 @@ spec:
             - ssd       
   containers:
     - name: utrains-app
-      image: 076892551558.dkr.ecr.us-east-1.amazonaws.com/geolocation_ecr_rep:latest
+      image: httpd
       resources:
         limits:
           memory: "500Mi"
@@ -36,11 +36,11 @@ spec:
 
 #
 # This means that the pod will PREFER to get
-# scheduled on a node that has a memory=ssd label and a size=small label.
+# scheduled on a node that has a memory=ssd label and a sku=small label.
 #
 # First label one/more nodes
 # we are classifying our nodes as small, medium & heavy 
-# the label name is "size" value can be "small / medium / heavy"
+# the label name is "sku" value can be "small / medium / heavy"
 #
 # First label nodes as small / medium:
 # kubectl label nodes nodeone.example.com size=small
@@ -60,19 +60,19 @@ spec:
 # kubectl create -f pod-with-preferred-node-affinity-multiple.yaml
 #
 # check the pod
-# kubectl get pods --namespace=geolocation --output=wide
+# kubectl get pods -n geolocation -o wide
 #
 # get details about pod
-# kubectl describe pod/utrains --namespace=geolocation
+# kubectl describe pod utrains -n geolocation
 #
 # check for the node where its running, it should be
 # PROBABLY on nodes with label "memory=ssd" and "size=small"
 # 
 # delete pod
-# kubectl delete pod/utrains --namespace=geolocation
+# kubectl delete pod utrains -n geolocation
 #
 # delete the labels
-# kubectl label node nodeone.example.com size-
-# kubectl label node nodetwo.example.com size-
+# kubectl label node nodeone.example.com sku-
+# kubectl label node nodetwo.example.com sku-
 # kubectl label node nodeone.example.com memory-
 #
