@@ -21,7 +21,7 @@ spec:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-          - key: size
+          - key: sku
             operator: NotIn
             values:
             - small
