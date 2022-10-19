@@ -3,14 +3,14 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: utrains
+  name: utrains2
   namespace: geolocation
   labels:
-   app: utrains
+   app: utrains2
 spec:
   containers:
     - name: utrains-app
-      image: 076892551558.dkr.ecr.us-east-1.amazonaws.com/geolocation_ecr_rep:latest
+      image: httpd
       resources:
         limits:
           memory: "500Mi"
@@ -21,21 +21,21 @@ spec:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-          - key: size
+          - key: sku
             operator: In
             values:
-            - large
+            - heavy
             - medium
 
 #
 # First assign labels on all nodes in our cluster
-# kubectl label node nodeone.example.com size=small
-# kubectl label node nodetwo.example.com size=large
+# kubectl label node nodeone.example.com sku=small
+# kubectl label node nodetwo.example.com sku=heavy
 #
 # Confirm the labels
 # kubectl get nodes --show-labels
 #
-# Lets think we have some nodes with label small/medium/large
+# Lets think we have some nodes with label small/medium/heavy
 # We want this pod to be deployed on either pod having small
 # OR medium label
 #
@@ -50,18 +50,18 @@ spec:
 # kubectl create -f pod-with-required-node-affinity-multiple.yaml
 #
 # check the pod
-# kubectl get pods --namespace=geolocation --output=wide
+# kubectl get pods -n geolocation -o wide
 #
 # get details about pod
-# kubectl describe pod/utrains --namespace=geolocation
+# kubectl describe pod utrains -n geolocation
 #
 # check for the node where its running. It must be
-# running on node having label size=small OR size=medium
+# running on node having label sku=small OR sku=medium
 # 
 # delete pod
-# kubectl delete pod/utrains --namespace=geolocation
+# kubectl delete pod utrains -n geolocation
 #
 # delete the labels
-# kubectl label node nodeone.example.com size-
-# kubectl label node nodetwo.example.com size-
+# kubectl label node nodeone.example.com sku-
+# kubectl label node nodetwo.example.com sku-
 # 
