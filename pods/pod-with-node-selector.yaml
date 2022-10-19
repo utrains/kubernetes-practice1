@@ -31,7 +31,7 @@ spec:
 #
 # Confirm for the labels on nodes using:
 #
-# kubectl get nodes --show-labels 
+# kubectl get nodes --show-labels | grep sku 
 #
 # create namespace geolocation -
 # kubectl create namespace geolocation
