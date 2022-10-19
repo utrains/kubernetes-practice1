@@ -29,13 +29,13 @@ spec:
 #
 # First assign labels on all nodes in our cluster
 # kubectl label node nodeone.example.com sku=small
-# kubectl label node nodetwo.example.com sku=large
+# kubectl label node nodetwo.example.com sku=heavy
 #
 # Confirm the labels
 # kubectl get nodes --show-labels
 #
-# Lets think we have some nodes with label small/medium/large
-# We want this pod, NEVER to be deployed on node having size=small
+# Lets think we have some nodes with label small/medium/heavy
+# We want this pod, NEVER to be deployed on node having sku=small
 #
 # Confirm the labels on nodes using:
 #
