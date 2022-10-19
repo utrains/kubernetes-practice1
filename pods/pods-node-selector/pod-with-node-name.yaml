@@ -3,10 +3,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: utrains
+  name: utrains2
   namespace: geolocation
   labels:
-   app: utrains
+   app: utrains2
 spec:
   nodeName: nodeone.example.com 
   containers:
@@ -21,7 +21,7 @@ spec:
 
 #
 # We are scheduling our pod to run on a SPECIFIC node - nodeone.example.com 
-#using "nodeName" parameter
+#using "nodeName" parameter (Put in your own node name)
 #
 # create namespace geolocation -
 # kubectl create namespace geolocation
@@ -33,10 +33,10 @@ spec:
 # kubectl get pods
 #
 # get details about pod
-# kubectl describe pod utrains -n geolocation
+# kubectl describe pod utrains2 -n geolocation
 #
 # check for the node where its running
 #
 # delete pod
-# kubectl delete pod utrains -n geolocation
+# kubectl delete pod utrains2 -n geolocation
 #
