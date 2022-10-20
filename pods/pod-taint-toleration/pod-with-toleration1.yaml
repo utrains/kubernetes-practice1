@@ -1,17 +1,14 @@
 # pod-with-toleration1.yaml
 #
 apiVersion: v1
-
 kind: Pod
-
 metadata:
   name: webserver
   namespace: geolocation
-
 spec:
   containers:
     - name: webserver
-      image: 076892551558.dkr.ecr.us-east-1.amazonaws.com/geolocation_ecr_rep:latest
+      image: httpd
       resources:
         requests:
           cpu: "500m"
@@ -30,22 +27,20 @@ spec:
     effect: "NoSchedule"
 
 #
-# first add a taint (fragrance) to nodeone.example.com:
+# first add a taint to nodeone.example.com:
 # kubectl taint node nodeone.example.com color=pink:NoSchedule
 # 
 # add taint for nodetwo.example.com also:
 # kubectl taint node nodetwo.example.com color=yellow:NoSchedule
 #
 # confirm that taint is applied on nodeone.example.com & nodetwo.example.com:
-# kubectl describe node nodeone.example.com
-# kubectl describe node nodetwo.example.com
-# (check for value under Taints)
-#
-# Create the pod which has tolerance for color pink
+# kubectl describe node nodeone.example.com | grep Taint
+# kubectl describe node nodetwo.example.com | grep Taint
 #
 # Create namespace geolocation -
 # kubectl create namespace geolocation
 #
+# Create the pod which has tolerance for color pink
 # Run the pod
 # kubectl create -f pod-with-toleration1.yaml
 #
@@ -67,9 +62,8 @@ spec:
 # kubectl taint node nodeone.example.com color:NoSchedule-
 # kubectl taint node nodetwo.example.com color:NoSchedule-
 #
-# Describe the node master.example.com and understand
-# why a pod is never assigned for master.example.com
-# kubectl describe node master.example.com 
+# Describe the node master and understand why a pod is never assigned there
+# kubectl describe node master.example.com | grep Taint 
 #
 
 
