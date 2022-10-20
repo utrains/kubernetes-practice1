@@ -10,7 +10,7 @@ metadata:
 spec:
   containers:
     - name: utrains-app
-      image: 076892551558.dkr.ecr.us-east-1.amazonaws.com/geolocation_ecr_rep:latest
+      image: httpd
       resources:
         limits:
           memory: "500Mi"
