@@ -37,9 +37,6 @@ spec:
 # 
 # curl http://ip-address-of-pod
 #
-# You should the website welcome message from 
-# Network Nuts
-#
 # delete pod
 # kubectl delete pod utrains --namespace=geolocation
 #
