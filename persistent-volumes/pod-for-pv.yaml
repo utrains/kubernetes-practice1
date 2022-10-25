@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: first-pv-pod
+spec:
+  volumes:
+    - name: first-pv-storage
+      persistentVolumeClaim:
+        claimName: first-pv-claim
+  containers:
+    - name: first-pv-container
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: first-pv-storage
+          
+# 
+# First create a pv and a pvc
+# Create the pod to use the pv
+# kubectl create -f pod-for-pv.yaml
+#
+# Verify the container in the pod is running
+# kubectl get pod first-pv-pod
+#
+# Get a shell to the container running in the pod
+# kubectl exec -it first-pv-pod --/bin/bash
+#
+# Verify the nginx is serving the index.html file from the hostPath volume
+# This should be run in the root shell that comes from the kubectl exec command
+# apt update
+# apt install curl
+# curl http://localhost/
+#
+# The output should be the content of the index.html file
+#
+# Delete the resources
+# kubectl delete pod first-pv-pod
+# kubectl delete pvc first-pv-claim
+# kubectl delete pv first-pv-volume
