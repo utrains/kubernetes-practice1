@@ -1,0 +1,15 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: utrains-allow-from-web
+spec:
+  policyTypes:
+  - Ingress
+  podSelector:
+    matchLabels:
+      app: utrains
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: web
