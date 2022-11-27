@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-quota3
+  namespace: quotas
+spec:
+  containers:
+  - name: quota-container3
+    image: nginx
+    resources:
+      limits:
+        memory: "800Mi"
+        cpu: "1000m"
+      requests:
+        memory: "300Mi"
+        cpu: "350m"
