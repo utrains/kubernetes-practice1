@@ -11,11 +11,6 @@ spec:
   containers:
     - name: utrains-app
       image: httpd
-      resources:
-        limits:
-          memory: "500Mi"
-        requests:
-          memory: "300Mi"
   nodeSelector:
         sku: small 
 
