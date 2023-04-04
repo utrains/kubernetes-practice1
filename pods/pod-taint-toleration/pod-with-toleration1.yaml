@@ -9,13 +9,6 @@ spec:
   containers:
     - name: webserver
       image: httpd
-      resources:
-        requests:
-          cpu: "500m"
-          memory: "128Mi"
-        limits:
-          cpu: "1000m"
-          memory: "256Mi"
       ports:
         - containerPort: 80
           name: http
