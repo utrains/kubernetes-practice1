@@ -8,15 +8,11 @@ metadata:
   labels:
    app: utrains2
 spec:
-  nodeName: nodeone.example.com 
+  nodeName: nodeone.example.com
+  # Replace nodeone.example.com with your own node name
   containers:
     - name: utrains-app
       image: httpd
-      resources:
-        limits:
-          memory: "500Mi"
-        requests:
-          memory: "300Mi"
 
 
 #
