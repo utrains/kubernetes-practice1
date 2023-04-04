@@ -28,11 +28,6 @@ spec:
   containers:
     - name: utrains-app
       image: httpd
-      resources:
-        limits:
-          memory: "500Mi"
-        requests:
-          memory: "300Mi"
 
 #
 # This means that the pod will PREFER to get
