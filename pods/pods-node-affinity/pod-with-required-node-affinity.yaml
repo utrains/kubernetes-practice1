@@ -3,10 +3,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: utrains
+  name: sfgtrain
   namespace: geolocation
   labels:
-   app: utrains
+   app: sfgtrain
 spec:
   affinity:
     nodeAffinity:
@@ -18,7 +18,7 @@ spec:
             values:
             - small       
   containers:
-    - name: utrains-app
+    - name: sfgtrain-app
       image: httpd
 
 #
@@ -43,16 +43,16 @@ spec:
 # kubectl create -f pod-with-required-node-affinity.yaml
 #
 # check the pod
-# kubectl get pods pod utrains -n geolocation -o wide
+# kubectl get pods pod sfgtrain -n geolocation -o wide
 #
 # get details about pod
-# kubectl describe pod utrains -n geolocation
+# kubectl describe pod sfgtrain -n geolocation
 #
 # check for the node where its running, it should be
 # on any of the nodes with label "sku=small"
 # 
 # delete pod
-# kubectl delete pod utrains -n geolocation
+# kubectl delete pod sfgtrain -n geolocation
 #
 # delete the labels
 # kubectl label node nodeone.example.com sku-

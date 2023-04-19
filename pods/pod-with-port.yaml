@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: utrains
+  name: sfgtrain
   namespace: geolocation
   labels:
-   app: utrains
+   app: sfgtrain
 spec:
   containers:
-    - name: utrains-app
+    - name: sfgtrain-app
       image: httpd
 #      image: 076892551558.dkr.ecr.us-east-1.amazonaws.com/geolocation_ecr_rep:latest
       ports:
@@ -30,7 +30,7 @@ spec:
 # kubectl get pods --namespace=geolocation
 #
 # get details about pod
-# kubectl describe pod utrains --namespace=geolocation
+# kubectl describe pod sfgtrain --namespace=geolocation
 # 
 # Find the IP address of this pod and the node where
 # its running. Go to that node and do a :
@@ -38,5 +38,5 @@ spec:
 # curl http://ip-address-of-pod
 #
 # delete pod
-# kubectl delete pod utrains --namespace=geolocation
+# kubectl delete pod sfgtrain --namespace=geolocation
 #

@@ -3,13 +3,13 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: utrains
+  name: sfgtrain
   namespace: geolocation
   labels:
-   app: utrains
+   app: sfgtrain
 spec:
   containers:
-    - name: utrains-app
+    - name: sfgtrain-app
       image: httpd
   affinity:
     podAffinity:
@@ -41,16 +41,16 @@ spec:
 # kubectl get pods --namespace=geolocation --output=wide
 #
 # get details about pod
-# kubectl describe pod/utrains --namespace=geolocation
+# kubectl describe pod/sfgtrain --namespace=geolocation
 #
 # get details of all the pods
 # kubectl get pods -o wide --namespace=geolocation
 #
 # check that both the pods will be running on the same nodes
-# and utrains pod will be deployed on same node where
+# and sfgtrain pod will be deployed on same node where
 # web pod is running
 # 
 # delete pod
-# kubectl delete pod utrains --namespace=geolocation
+# kubectl delete pod sfgtrain --namespace=geolocation
 # kubectl delete pod web --namespace=geolocation
 #

@@ -1,13 +1,13 @@
 kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
 metadata:
-  name: utrains1-allow-from-web
+  name: sfgtrain1-allow-from-web
 spec:
   policyTypes:
   - Ingress
   podSelector:
     matchLabels:
-      app: utrains
+      app: sfgtrain
   ingress:
   - from:
     - podSelector:

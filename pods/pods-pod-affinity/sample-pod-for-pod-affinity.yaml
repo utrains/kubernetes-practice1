@@ -9,7 +9,7 @@ metadata:
    app: web
 spec:
   containers:
-    - name: utrains-app
+    - name: sfgtrain-app
       image: httpd
 #
 # Creating a simple pod. Which has apache

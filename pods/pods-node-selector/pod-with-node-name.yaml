@@ -3,15 +3,15 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: utrains2
+  name: sfgtrain2
   namespace: geolocation
   labels:
-   app: utrains2
+   app: sfgtrain2
 spec:
   nodeName: nodeone.example.com
   # Replace nodeone.example.com with your own node name
   containers:
-    - name: utrains-app
+    - name: sfgtrain-app
       image: httpd
 
 
@@ -29,10 +29,10 @@ spec:
 # kubectl get pods
 #
 # get details about pod
-# kubectl describe pod utrains2 -n geolocation
+# kubectl describe pod sfgtrain2 -n geolocation
 #
 # check for the node where its running
 #
 # delete pod
-# kubectl delete pod utrains2 -n geolocation
+# kubectl delete pod sfgtrain2 -n geolocation
 #

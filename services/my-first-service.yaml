@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: utrains-service
+  name: sfgtrain-service
 spec:
   selector:
-    app: utrains
+    app: sfgtrain
   ports:
     - protocol: TCP
       port: 8080

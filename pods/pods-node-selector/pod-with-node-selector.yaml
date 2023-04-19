@@ -3,13 +3,13 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: utrains
+  name: sfgtrain
   namespace: geolocation
   labels:
-   app: utrains
+   app: sfgtrain
 spec:
   containers:
-    - name: utrains-app
+    - name: sfgtrain-app
       image: httpd
   nodeSelector:
         sku: small 
@@ -38,15 +38,15 @@ spec:
 # kubectl get pods -n geolocation -o wide
 #
 # get details about pod
-# kubectl describe pod utrains -n geolocation
+# kubectl describe pod sfgtrain -n geolocation
 #
 # check for the node where its running
-# Kubectl describe pod utrains -n geolocation
+# Kubectl describe pod sfgtrain -n geolocation
 # Look for: 
 # Node-Selectors:  sku=small 
 #
 # delete pod
-# kubectl delete pod utrains -n geolocation
+# kubectl delete pod sfgtrain -n geolocation
 #
 # delete the label from nodeone.example.com
 # kubectl label node nodeone.example.com sku-
