@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: utrains
+ namespace: dev
+ labels:
+  app: utrains
+spec:
+ containers:
+   - name: utrains-app
+     image: httpd
+     
+#     
+# Create a namespace called dev
+# kubectl create namespace dev
+# kubectl get namespace
+#
+# create the file for the pod
+# vi pod-namespace.yaml
+#
+# deploy the pod in the cluster
+# kubectl create -f pod-namespace.yaml
+#
+# verify
+# kubectl get pods -n dev
+#
+# delete pod
+# kubectl delete pods utrains -n dev
