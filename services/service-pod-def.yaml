@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: utrains-pod
+  labels:
+    name: utrains
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    ports:
+      - containerPort: 80
+        name: http-web-svc
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: utrains-service
+spec:
+  selector:
+    name: utrains
+  ports:
+  - name: utrains-service-port
+    protocol: TCP
+    port: 80
+    targetPort: http-web-svc
+    
+    
+# create a pod and expose it using a service
+# kubectl create -f service-pod-def.yaml
+#
+# verify the objects created
+# kubectl get pods
+# kubectl get svc
+# kubectl describe svc utrains-service
+#
+# delete objects
+# kubectl delete svc utrains-service
+# kubectl delete pods utrains-pod
