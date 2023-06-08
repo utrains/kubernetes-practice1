@@ -10,7 +10,6 @@ spec:
     image: nginx
     ports:
       - containerPort: 80
-        name: http-web-svc
 
 ---
 apiVersion: v1
@@ -24,7 +23,7 @@ spec:
   - name: utrains-service-port
     protocol: TCP
     port: 80
-    targetPort: http-web-svc
+    targetPort: 80
     
     
 # create a pod and expose it using a service
