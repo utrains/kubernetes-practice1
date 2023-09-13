@@ -1,0 +1,42 @@
+# pod-guaranteed.yaml
+#
+apiVersion: v1
+kind: Pod
+metadata:
+  name: qos-guaranteed
+  namespace: qos-example
+  labels:
+   app: utrains
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      resources:
+        limits:
+          memory: "250Mi"
+          cpu: "400m"
+        requests:
+          memory: "250Mi"
+          cpu: "400m"
+#
+# Creating a simple pod. There are memory & cpu restrictions. The requests and limits of the resources section are the same 
+#
+# QoS = Guaranteed
+#
+# create namespace qos-example
+# kubectl create namespace qos-example
+#
+# run the pod
+# kubectl create -f pod-guaranteed.yaml
+#
+# check the pod
+# kubectl get pods --namespace=qos-example
+#
+# get details about pod
+# kubectl describe pod/nnappone --namespace=qos-example
+# 
+# Check the "QoS Class" value. 
+#
+# delete pod
+# kubectl delete pod/qos-guaranteed --namespace=qos-example
+#
