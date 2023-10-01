@@ -1,0 +1,37 @@
+# pod-besteffort.yaml
+#
+apiVersion: v1
+kind: Pod
+metadata:
+  name: qos-besteffort
+  namespace: qos-example
+  labels:
+   app: utrains
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+#
+# Creating a simple pod. Which has apache configured inside it. 
+# There are no cpu or memory limits applied on pod. 
+# So kubernetes cluster will try to give the best resources available. But cannot guarantee any number.
+#
+# QoS = Best Effort 
+#
+# create namespace qos-example
+# kubectl create namespace qos-example
+#
+# run the pod
+# kubectl create -f pod-besteffort.yaml
+#
+# check the pod
+# kubectl get pods --namespace=qos-example
+#
+# get details about pod
+# kubectl describe pod/qos-besteffort --namespace=qos-example
+# 
+# Check the "QoS Class" value. 
+#
+# delete pod
+# kubectl delete pod/qos-besteffort --namespace=qos-example
+#
