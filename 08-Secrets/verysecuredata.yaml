@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysecret
+type: Opaque
+data:
+  username: ZGV2b3Bz
+  password: MWYyZDFlMmU2N2Rm
+
+
+# H- Secrets
+#    just like Configmap but it is used to store sensitive data like private credentials, password, tokens, keys
+#    Here we want to store a username devops and a password 1f2d1e2e67df in a secret object. First, we need to  convert the values to base64
+    
+# echo -n 'devops' | base64
+# echo -n '1f2d1e2e67df' | base64
+
+# Secret definition
+####################################################################  
